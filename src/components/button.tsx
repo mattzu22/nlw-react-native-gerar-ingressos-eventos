@@ -1,25 +1,30 @@
-import { Text, TouchableOpacity,TouchableOpacityProps, ActivityIndicator } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ActivityIndicator,
+} from "react-native"
 
-interface ButtonProps extends TouchableOpacityProps {
-  title: string;
-  isLoading?: boolean;
+type Props = TouchableOpacityProps & {
+  title: string
+  isLoading?: boolean
 }
 
-export function Button({ title, isLoading = false, ...rest }: ButtonProps) {
+export function Button({ title, isLoading = false, ...rest }: Props) {
   return (
-    <TouchableOpacity 
-      disabled={isLoading}
+    <TouchableOpacity
       activeOpacity={0.7}
+      disabled={isLoading}
       className="w-full h-14 bg-orange-500 items-center justify-center rounded-lg"
       {...rest}
     >
       {isLoading ? (
-        <ActivityIndicator className="text-green-500"/>
+        <ActivityIndicator className="text-green-500" />
       ) : (
         <Text className="text-green-500 text-base font-bold uppercase">
           {title}
         </Text>
       )}
     </TouchableOpacity>
-  );
+  )
 }
